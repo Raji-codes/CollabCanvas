@@ -74,3 +74,4 @@ pubsub-debug.log*
 
 # AI Studio Internal
 firebase-applet-config.json
+migrated_prompt_history/
