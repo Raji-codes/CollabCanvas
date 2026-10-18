@@ -35,13 +35,15 @@ jobs:
         run: npm install
 
       - name: ⚙️ Generate Firebase config
+        env:
+          FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }}
         run: |
           if [ ! -f firebase-applet-config.json ]; then
-            cat << 'EOF' > firebase-applet-config.json
+            cat << EOF > firebase-applet-config.json
           {
             "projectId": "gen-lang-client-0487921246",
             "appId": "1:396796690797:web:d805a4bc4c02fa393c9a64",
-            "apiKey": "AIzaSyDBhTaxnuy8oFV5f3Dt_yKGtvsSsHYGZR4",
+            "apiKey": "${FIREBASE_API_KEY}",
             "authDomain": "gen-lang-client-0487921246.firebaseapp.com",
             "firestoreDatabaseId": "ai-studio-c9a5aac4-d4d3-480e-bc87-877a32c06fbb",
             "storageBucket": "gen-lang-client-0487921246.firebasestorage.app",
@@ -92,13 +94,15 @@ jobs:
         uses: actions/checkout@v4
 
       - name: ⚙️ Generate Firebase config for Docker build
+        env:
+          FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }}
         run: |
           if [ ! -f firebase-applet-config.json ]; then
-            cat << 'EOF' > firebase-applet-config.json
+            cat << EOF > firebase-applet-config.json
           {
             "projectId": "gen-lang-client-0487921246",
             "appId": "1:396796690797:web:d805a4bc4c02fa393c9a64",
-            "apiKey": "AIzaSyDBhTaxnuy8oFV5f3Dt_yKGtvsSsHYGZR4",
+            "apiKey": "${FIREBASE_API_KEY}",
             "authDomain": "gen-lang-client-0487921246.firebaseapp.com",
             "firestoreDatabaseId": "ai-studio-c9a5aac4-d4d3-480e-bc87-877a32c06fbb",
             "storageBucket": "gen-lang-client-0487921246.firebasestorage.app",
